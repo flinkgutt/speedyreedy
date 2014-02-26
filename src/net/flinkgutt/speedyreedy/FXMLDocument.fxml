@@ -2,49 +2,54 @@
 
 <?import java.lang.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="338.0" style="-fx-background-color: darkblue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="net.flinkgutt.speedyreedy.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="299.0" prefWidth="400.0" style="-fx-background-color: darkblue;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="net.flinkgutt.speedyreedy.FXMLDocumentController">
   <children>
-    <Accordion prefHeight="200.0" prefWidth="373.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <expandedPane>
-        <TitledPane fx:id="x1" animated="false" text="Controls">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: darkblue;">
+    <VBox prefHeight="299.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="118.0" prefWidth="338.0" style="-fx-background-color: darkblue;">
+          <children>
+            <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="13.0" spacing="5.0">
               <children>
-                <HBox id="HBox" alignment="CENTER" layoutX="14.0" layoutY="13.0" spacing="5.0">
+                <Button id="button" onAction="#handleStartButtonAction" text="Start" />
+                <TextField fx:id="wpmField" prefWidth="69.0" promptText="Words per minute" text="350" />
+                <Button id="button" fx:id="pauseButton" disable="true" onAction="#handlePauseButtonAction" text="Pause" />
+                <Button fx:id="continueButton" disable="true" mnemonicParsing="false" onAction="#handleContinueButtonAction" text="Continue" />
+                <TextField id="numWords" fx:id="numWordsField" prefWidth="60.0" promptText="# words" text="1" />
+              </children>
+            </HBox>
+            <Label fx:id="textLabel" alignment="CENTER" layoutY="76.0" prefWidth="299.0" text="" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+              <font>
+                <Font size="24.0" />
+              </font>
+            </Label>
+          </children>
+        </AnchorPane>
+        <Accordion prefHeight="149.5" prefWidth="400.0" VBox.vgrow="ALWAYS">
+          <expandedPane>
+            <TitledPane fx:id="x1" animated="false" expanded="true" prefHeight="149.5" prefWidth="400.0" text="Text to read">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                    <Button id="button" onAction="#handleStartButtonAction" text="Start" />
-                    <TextField fx:id="wpmField" prefWidth="69.0" promptText="Words per minute" text="350" />
-                    <Button id="button" fx:id="pauseButton" disable="true" onAction="#handlePauseButtonAction" text="Pause" />
-                    <Button fx:id="continueButton" disable="true" mnemonicParsing="false" onAction="#handleContinueButtonAction" text="Continue" />
+                    <TextArea fx:id="textInput" prefHeight="152.0" prefWidth="334.0" promptText="Paste text that you want to read here" style="" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   </children>
-                </HBox>
-                <Label fx:id="textLabel" alignment="CENTER" layoutX="21.0" layoutY="76.0" prefWidth="299.0" text="" textAlignment="CENTER" textFill="WHITE">
-                  <font>
-                    <Font size="24.0" />
-                  </font>
-                </Label>
-              </children>
-            </AnchorPane>
-          </content>
-        </TitledPane>
-      </expandedPane>
-      <panes>
-        <fx:reference source="x1" />
-        <TitledPane animated="false" text="Text to read">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-              <children>
-                <TextArea fx:id="textInput" prefHeight="152.0" prefWidth="334.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-              </children>
-            </AnchorPane>
-          </content>
-        </TitledPane>
-      </panes>
-    </Accordion>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </expandedPane>
+          <panes>
+            <fx:reference source="x1" />
+          </panes>
+          <VBox.margin>
+            <Insets top="30.0" />
+          </VBox.margin>
+        </Accordion>
+      </children>
+    </VBox>
   </children>
 </AnchorPane>
